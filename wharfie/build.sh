@@ -9,9 +9,11 @@ DOCKER_TAG=${DOCKER_TAG:-garrettheaver/armhf-wharfie}
 BASE_IMAGE=${BASE_IMAGE:-container4armhf/armhf-alpine}
 
 # line up the files
-curl -s https://raw.githubusercontent.com/garrettheaver/wharfie/master/Dockerfile | \
-  sed -e 's|FROM .*:|FROM '"$BASE_IMAGE"':|g' > Dockerfile && \
+git clone https://github.com/garrettheaver/wharfie.git .wharfie && \
+  cd .wharfie && \
+  sed -i 's|FROM .*:|FROM '"$BASE_IMAGE"':|g' Dockerfile && \
   docker build --tag="$DOCKER_TAG" . && \
   docker push "$DOCKER_TAG" && \
-  rm Dockerfile
+  cd .. && \
+  rm -rf .wharfie
 
