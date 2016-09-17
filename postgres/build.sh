@@ -7,7 +7,8 @@ export GNUPGHOME="\$GNUPGHOME"
 export GOSU_VERSION="1.7"
 export LANG="en_US.utf8"
 
-cat Dockerfile | envsubst | \
-  docker build --tag "garrettheaver/armhf-postgres:${PG_MAJOR}" - && \
-  docker push "garrettheaver/armhf-postgres:${PG_MAJOR}"
+cat Dockerfile.armhf | envsubst > Dockerfile
+docker build --tag "garrettheaver/armhf-postgres:${PG_MAJOR}" - && \
+  docker push "garrettheaver/armhf-postgres:${PG_MAJOR}" && \
+  rm Dockerfile
 
