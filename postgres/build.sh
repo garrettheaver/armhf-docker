@@ -3,6 +3,7 @@
 export PG_VERSION=$1
 export PG_MAJOR=${PG_VERSION:0:3}
 export BASE_IMAGE="armv7/armhf-ubuntu:xenial"
+export GNUPGHOME="\$GNUPGHOME"
 export GOSU_VERSION="1.7"
 export LANG="en_US.utf8"
 
