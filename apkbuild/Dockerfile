@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM container4armhf/armhf-alpine:3.4
 MAINTAINER Garrett Heaver <https://github.com/garrettheaver>
 
 RUN apk update \
