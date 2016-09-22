@@ -18,7 +18,7 @@ cd $1 \
   && abuild -R \
   && cd /home/build/packages
 
-aws s3 cp . s3://daft.cluster/apk \
+aws s3 cp . s3://daft-cluster/apk \
   --exclude "*" --include "*.apk" \
   --recursive --acl public-read
 
