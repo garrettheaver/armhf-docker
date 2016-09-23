@@ -2,7 +2,7 @@
 
 ARCH=`uname -m`
 git config --global user.name "Build ($ARCH)"
-git config --global user.name "build@$ARCH.localhost"
+git config --global user.email "build@$ARCH.localhost"
 
 cd /home/build \
   && git clone --depth 1 git://git.alpinelinux.org/aports \
