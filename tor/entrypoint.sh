@@ -1,5 +1,6 @@
 #! /bin/sh
 CONFIG=/var/lib/tor/torrc
+cat /dev/null > $CONFIG
 
 while true; do
   case "$1" in
