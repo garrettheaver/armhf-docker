@@ -2,23 +2,31 @@
 CONFIG=/var/lib/tor/torrc
 
 while true; do
-
   case "$1" in
-    -l|--listen)
+    --listen)
       printf "SocksListenAddress $2:9050\n" >> $CONFIG
+      shift 2
       ;;
 
-    -x|--exit-nodes)
+    --exit-nodes)
       printf "ExitNodes $2\nStrictNodes 1\n" >> $CONFIG
+      shift 2
+      ;;
+
+    --socks-policy)
+      printf "SocksPolicy $2\n" >> $CONFIG
+      shift 2
+      ;;
+
+    --avoid-disk-writes)
+      printf "AvoidDiskWrites 1\n" >> $CONFIG
+      shift 1
       ;;
 
     *)
       break
       ;;
   esac
-
-  shift 2
-
 done
 
 tor --ignore-missing-torrc -f $CONFIG
